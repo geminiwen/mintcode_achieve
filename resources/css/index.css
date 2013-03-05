@@ -1,0 +1,38 @@
+@charset("utf-8");
+
+table {
+	margin: .5em auto 1.5em auto;
+	width: 98%;
+}
+
+.MainTitle {
+	background-color: #DDA0DD;
+	border: 3px solid;
+	padding: 5px;
+}
+
+.Notice {
+	background-color: #CDC9C9;
+	font-size: 20px;
+	margin: 20px 0;
+	padding: 1px;
+}
+
+.Notice li {
+	list-style: none;
+}
+
+.MainContent {
+	padding: 5px;
+	margin: 0px;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.MainContent tr {
+	border-bottom: 1px dotted gray;
+}
+
+.MainContent tr td {
+	padding: 0.1em;
+}
