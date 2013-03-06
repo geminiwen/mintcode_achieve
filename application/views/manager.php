@@ -18,26 +18,19 @@
 				<tr><th></th><th>编号</th><th>名字</th><th>上班时间</th><th>下班时间</th></tr>
 			</thead>
 			<tbody>
+				{users}
+				<tr>
+					<td><input type="checkbox" name="du[]"></td>
+					<td>{user_id}</td>
+					<td>{username}</td>
+					<td><input type="text" name="starttime[]" value='{start_time}'></td>
+					<td><input type="text" name="endtime[]" value='{end_time}'></td>
+				</tr>
+				{/users}
 				
-				<?php
-					$count = count ( $users );
-					for($i = 0; $i < $count; $i++ ) {
-						echo '<tr><td>';
-						echo '<input type="checkbox" name="du[]">';
-						echo '</td><td>';
-						echo $users[$i]->user_id;
-						echo '</td><td>';
-						echo $users[$i]->username;
-						echo '</td><td>';
-						echo '<input type="text" name="starttime[]" value = '. $users[$i]->start_time .'>';
-						echo '</td><td>';
-						echo '<input type="text" name="endtime[]" value = '. $users[$i]->end_time .'>';
-						echo '</td></tr>';
-					}
-				?>
 			</tbody>
 			<tfoot>
-				<tr style="background-color:#CDC9C9"><td><input type="checkbox"></td><td>全部选择</td><td></td><td></td><td><button onclick="window.location='manager/user'">add new staff</button></td></tr>
+				<tr style="background-color:#CDC9C9"><td><input type="checkbox"></td><td>全部选择</td><td></td><td></td><td><button onclick="window.location='manager/user'">添加新成员</button></td></tr>
 			</tfoot>
 		</table>
 		

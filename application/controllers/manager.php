@@ -12,7 +12,7 @@ class Manager extends CI_Controller {
 	{
 		
 		$this->load->model("User_model");
-		
+		$this->load->library('parser');
 		$user = $_SESSION['user'];
 		do {
 			
@@ -36,7 +36,7 @@ class Manager extends CI_Controller {
 
 			$data['users'] = $users;
 
-			$this->load->view("manager",$data);
+			$this->parser->parse("manager",$data);
 			
 		}while (false);
 	}
@@ -60,17 +60,37 @@ class Manager extends CI_Controller {
 				echo "U have no authority to enter in";
 				break;
 			}
-
+			
 			if( $action === false ) {
 				$this->load->view("add_user");
 				break;
 			}
 
-			if( !strcmp($action,'adduser') ) {
+			if( 0 == strcmp($action,"add_user") ) {
+				
+				$username = $this->input->post("username");
+				$starttime = $this->input->post("starttime");
+				$endtime = $this->input->post("endtime");
+			
+				$this->inner_add_user($username,$starttime,$endtime);
 
-				$username = $this->load->post("username");
-				$password = $this->load->post("password");
 			}
 		} while( false );
+	}
+
+	private function inner_add_user ($username,$starttime,$endtime) {
+		$this->load->model("User_model");
+		
+		$user = array( 'username' => $username ,
+					   'start_time' => $starttime,
+					   'end_time' => $endtime );
+		$is_success = $this->User_model->insert($user);
+		
+		if( $is_success > 0 ) {
+			echo "添加用户成功";
+		} else {
+			echo "添加用户失败";
+		}
+		
 	}
 }
