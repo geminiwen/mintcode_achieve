@@ -6,6 +6,6 @@ define(function(require,exports) {
 	var date = new MTDate("#date");
 	date.render();
 
-	var fileHolder = new MTFile("filedrag");
+	var fileHolder = new MTFile("filedrag","/timeline/upload");
 	fileHolder.render();
 });

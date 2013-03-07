@@ -13,14 +13,13 @@ class Manager extends CI_Controller {
 		
 		$this->load->model("User_model");
 		$this->load->library('parser');
-		$user = $_SESSION['user'];
 		do {
 			
-			if( !isset($user) ) {
+			if( !isset($_SESSION['user']) ) {
 				echo "Please login first.";
 				break;
 			}
-
+			$user = $_SESSION['user'];
 			$authority = $user->user_authority;
 
 			$can_access = ( $authority >> 1 ) & 1;

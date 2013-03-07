@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2013 年 03 月 06 日 20:07
+-- 生成日期: 2013 年 03 月 07 日 20:24
 -- 服务器版本: 5.5.29-0ubuntu0.12.10.1
 -- PHP 版本: 5.4.6-1ubuntu1.1
 
@@ -51,9 +51,10 @@ INSERT INTO `mt_timetable` (`time_id`, `user_id`, `start_time`, `end_time`) VALU
 CREATE TABLE IF NOT EXISTS `mt_useraccount` (
   `account_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '流水ID',
   `user_id` bigint(20) NOT NULL COMMENT '用户ID',
-  `start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '上班时间',
-  `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '下班时间',
-  PRIMARY KEY (`account_id`),
+  `start_time` time NOT NULL DEFAULT '00:00:00' COMMENT '上班时间',
+  `end_time` time NOT NULL DEFAULT '00:00:00' COMMENT '下班时间',
+  `account_date` date NOT NULL DEFAULT '0000-00-00',
+  PRIMARY KEY (`account_id`,`account_date`),
   UNIQUE KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='流水表' AUTO_INCREMENT=1 ;
 

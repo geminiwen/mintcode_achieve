@@ -33,16 +33,25 @@ define(function(require,exports,module){
 		if( xhr.upload ) {
 			if( file.type == "application/vnd.ms-excel" 
 				|| file.type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ) {
-				alert("success!");
+				var x = 1;
+				xhr.onreadystatechange = function () {
+					if(xhr.readyState == 4 && xhr.status == 200 ) {
+						alert( xhr.responseText );
+					}
+				}
+				xhr.open("POST", formAction, true);
+				xhr.send(file);
 			} else {
 				alert("not a standard excel file!");
 			}
 		}
 	}
 
+	var formAction;
 
-	var MTFile = function (filedrag) {
+	var MTFile = function (filedrag,action) {
 		this.fileDrag = $id(filedrag);
+		formAction = action;
 	}
 
 	MTFile.prototype.render = function() {

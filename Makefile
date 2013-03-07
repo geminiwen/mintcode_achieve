@@ -1,4 +1,4 @@
-DIST_PATH := /var/www/
+DIST_PATH := /var/www/mintcode
 dist:
 	chmod -R 777 *
 	cp -R * $(DIST_PATH)
