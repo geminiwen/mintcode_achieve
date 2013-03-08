@@ -1,6 +1,11 @@
 @charset("utf-8");
 
-.QueryTable {
+.QueryTable,#dateTable {
 	width: 98%;
+	text-align: center;
+}
+
+#userinfo {
+	margin: 0 auto;
 	text-align: center;
 }

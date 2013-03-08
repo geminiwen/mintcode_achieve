@@ -20,9 +20,8 @@ class Timeline_model extends CI_Model {
 			$username = $_timeline['username'];
 			$this->db->where('username',$username);
 			$query = $this->db->get('mt_userinfo');
-			
 			$result = $query->result();
-
+			$query->free_result();
 			if( count ( $result ) <= 0 ) {
 				continue;
 			}
@@ -37,7 +36,7 @@ class Timeline_model extends CI_Model {
 			$query = $this->db->get('mt_useraccount');
 
 			$result = $query->result();
-
+			$query->free_result();
 			$kind = $_timeline['kind'];
 			$time = $_timeline['time'];
 
@@ -75,5 +74,23 @@ class Timeline_model extends CI_Model {
 		
 		$this->db->close();
 		return $affected_num;
+	}
+
+	public function query_bettween_date_by_user($user_id,$timeline_info) {
+		$this->load->database();
+		$start_date = $timeline_info['start_date'];
+		$end_date	= $timeline_info['end_date'];
+		$this->db->select('mt_userinfo.user_id,mt_userinfo.username,mt_useraccount.account_id,mt_useraccount.start_time,mt_useraccount.start_checked,mt_useraccount.end_time,mt_useraccount.end_checked,mt_useraccount.check_date
+			');
+		$this->db->from('mt_useraccount,mt_userinfo');
+		$this->db->where('mt_useraccount.check_date >=',$start_date);
+		$this->db->where('mt_useraccount.check_date <=',$end_date);
+		$this->db->where('mt_useraccount.user_id',$user_id);
+		$this->db->where('mt_useraccount.user_id = mt_userinfo.user_id');
+		$query = $this->db->get();
+		$result = $query->result();
+		$query->free_result();
+
+		return $result;
 	}
 }

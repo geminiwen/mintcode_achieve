@@ -10,8 +10,11 @@ class User_model extends CI_Model {
 	function query_by_username($username) {
 
 		$this->load->database();
-		$this->db->where('username',$username);
-		$query = $this->db->get('mt_userinfo');
+		$this->db->select('mt_userinfo.*, mt_timetable.start_time, mt_timetable.end_time');
+		$this->db->from('mt_userinfo,mt_timetable');
+		$this->db->where("mt_timetable.user_id = mt_userinfo.user_id");
+		$this->db->where('mt_userinfo.username',$username);
+		$query = $this->db->get();
 		$result	= $query->result();
 		$query->free_result();
 		$this->db->close();

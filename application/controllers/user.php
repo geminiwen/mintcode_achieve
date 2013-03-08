@@ -56,7 +56,8 @@ class User extends CI_Controller {
 				redirect($url);
 				break;
 			} else {
-				echo "普通用户界面";
+				$url = base_url("/query");
+				redirect($url);
 				break;
 			}
 

@@ -10,7 +10,13 @@ define(function(require,exports) {
 
 	var fileHolder = new MTFile("filedrag","/timeline/upload");
 	var success = function (data) {
-		var bSuccess = data['result'];
+		var result = data['result'];
+		if( result ) {
+			$('#infomation').text("录入成功");
+		} else {
+			$('#infomation').text("录入失败");
+		}
+		
 	};
 	fileHolder.render(success,success);
 	var checkAll = false;

@@ -55,13 +55,14 @@ define(function(require,exports,module){
 					|| file.type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ) {
 					var x = 1;
 					xhr.onreadystatechange = function () {
-						if(xhr.readyState == 4 && xhr.status == 200 ) {
-							if( self.successHandler )
-							self.successHandler( JSON.parse(xhr.responseText) );
-						} else if( xhr.status != 200 ) {
-							if( self.errorHandler )
-							self.errorHandler( xhr.responseText, xhr.statusText , xhr.status );
-						}
+						if(xhr.readyState == 4 ) {
+							if( xhr.status == 200 ){
+								if( self.successHandler ) self.successHandler( JSON.parse(xhr.responseText) );
+							}
+							else if( xhr.status != 200 ) {
+								if( self.errorHandler ) self.errorHandler( xhr.responseText, xhr.statusText , xhr.status );
+							}
+						} 
 					}
 					xhr.open("POST", self.formAction, true);
 					xhr.send(file);

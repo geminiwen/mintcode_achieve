@@ -54,7 +54,7 @@ class Timeline extends CI_Controller {
 				$office_time_hour += 24;
 			}
 
-			if( $office_time_hour > 12 )  {
+			if( $office_time_hour >= 12 )  {
 				$kind = 1;
 			} else {
 				$kind = 0;

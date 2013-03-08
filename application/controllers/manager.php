@@ -41,15 +41,16 @@ class Manager extends CI_Controller {
 	}
 
 	public function user() {
-		$user = $_SESSION['user'];
+		
 
 		$action = $this->input->get('action');
 		do {
 
-			if( !isset($user) ) {
-				echo "Please login first.";
+			if( !isset($_SESSION['user']) ) {
+				echo "Please <a href='/'>login</a> first.";
 				break;
 			}
+			$user = $_SESSION['user'];
 
 			$authority = $user->user_authority;
 
@@ -77,6 +78,20 @@ class Manager extends CI_Controller {
 		} while( false );
 	}
 
+	public function current_day() {
+		do {
+			if( ! isset($_SESSION['user'])){
+				echo 'Please login first';
+				break;
+			}
+
+			$user = $_SESSION['user'];
+			
+
+
+		} while ( false );
+	}
+
 	private function inner_add_user ($username,$starttime,$endtime) {
 		$this->load->model("User_model");
 		
@@ -90,6 +105,6 @@ class Manager extends CI_Controller {
 		} else {
 			echo "添加用户失败";
 		}
-		
+		echo "&nbsp;&nbsp;<a href='/manager'>返回</a>";
 	}
 }
