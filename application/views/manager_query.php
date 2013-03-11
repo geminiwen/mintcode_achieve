@@ -20,5 +20,6 @@
 		<tbody> </tbody>
 		<tfoot></tfoot>
 	</table>
+	<div id="information"></div>
 </body>
 </html>

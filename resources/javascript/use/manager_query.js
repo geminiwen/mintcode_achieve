@@ -46,11 +46,10 @@ define(function(require){
 			var tbody = $('#dateTable>tbody');
 			var userinfo = result['userinfo'];
 
-			$('#userinfo').html("<h1>名字："+userinfo['user_name']+"，上班时间："+userinfo['start_time']+"，下班时间："+userinfo['end_time']+"。</h1>");
 			$(tbody).empty();
 			for( var i = 0; i < count; i ++ ) {
 				var ele = data[i];
-				$("<tr></tr>").append("<td>"+ele['account_id']+"</td>")
+				$("<tr></tr>").append("<td>"+ele['username']+"</td>")
 							  .append("<td>"+ele['user_starttime']+"</td>")
 							  .append("<td>"+handleStartTime(ele)+"</td>")
 							  .append("<td>"+ele['user_endtime']+"</td>")
@@ -63,7 +62,7 @@ define(function(require){
 	};
 
 	function handleErrorData( xhr, textStatus, error ) {
-		$('#infomation').html(xhr.responseText);
+		$('#information').html(xhr.responseText);
 	}
 
 	$("#doQuery").click(function(){

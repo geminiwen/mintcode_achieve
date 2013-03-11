@@ -41,9 +41,9 @@ class Manager extends CI_Controller {
 	}
 
 	public function user() {
-		
 
 		$action = $this->input->get('action');
+		
 		do {
 
 			if( !isset($_SESSION['user']) ) {
@@ -85,6 +85,16 @@ class Manager extends CI_Controller {
 				break;
 			}
 
+			$user = $_SESSION['user'];
+
+			$authority = $user->user_authority;
+
+			$can_access = $this->can_access_manager( $authority );
+			if( ! $can_access ) {
+				echo 'U have no access to this page';
+				break;
+			}
+
 			$this->load->view("manager_query");
 
 		} while( false );
@@ -94,7 +104,7 @@ class Manager extends CI_Controller {
 	public function query() {
 		$result_data = array();
 		do {
-			if( ! isset($_SESSION['user'])){
+			if( ! isset($_SESSION['user']) ){
 				$result_data['result'] = false;
 				$result_data['message']=  'Please login first';
 				break;
@@ -147,6 +157,6 @@ class Manager extends CI_Controller {
 
 
 	private function can_access_manager( $user_authority ) {
-		return ( ( ( $authority >> 1 ) & 1 ) >= 1 );
+		return ( ( ( $user_authority >> 1 ) & 1 ) >= 1 );
 	}
 }

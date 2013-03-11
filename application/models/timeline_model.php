@@ -90,14 +90,14 @@ class Timeline_model extends CI_Model {
 		$query = $this->db->get();
 		$result = $query->result();
 		$query->free_result();
-
+		$this->db->close();
 		return $result;
 	}
 
 	public function query_timeline_by_date($check_date) {
 		$this->load->database();
-		$this->db->select('mt_userinfo.user_id,mt_userinfo.username,'+
-						  'mt_timetable.start_time as user_starttime,mt_timetable.end_time as user_endtime'+
+		$this->db->select('mt_userinfo.user_id,mt_userinfo.username,' .
+						  'mt_timetable.start_time as user_starttime,mt_timetable.end_time as user_endtime,' .
 					      'mt_useraccount.account_id,mt_useraccount.start_time,mt_useraccount.start_checked,mt_useraccount.end_time,mt_useraccount.end_checked,mt_useraccount.check_date');
 		$this->db->from('mt_useraccount,mt_userinfo,mt_timetable');
 		$this->db->where('mt_useraccount.check_date',$check_date);
@@ -106,7 +106,7 @@ class Timeline_model extends CI_Model {
 		$query = $this->db->get();
 		$result = $query->result();
 		$query->free_result();
-
+		$this->db->close();
 		return $result;
 	}
 }
