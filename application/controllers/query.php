@@ -78,7 +78,7 @@ class Query extends CI_Controller {
 			
 		} while( false );
 
-		//header("Content-Type: application/json; charset=utf-8");
+		header("Content-Type: application/json; charset=utf-8");
 		echo json_encode($result_data);
 	}
 

@@ -54,9 +54,9 @@ class Manager extends CI_Controller {
 
 			$authority = $user->user_authority;
 
-			$can_access = ( $authority >> 1 ) & 1;
+			$can_access = $this->can_access_manager($authority);
 
-			if( $can_access < 1 ) {
+			if( !$can_access) {
 				echo "U have no authority to enter in";
 				break;
 			}
@@ -78,18 +78,55 @@ class Manager extends CI_Controller {
 		} while( false );
 	}
 
-	public function current_day() {
+	public function query_index() {
 		do {
 			if( ! isset($_SESSION['user'])){
 				echo 'Please login first';
 				break;
 			}
 
-			$user = $_SESSION['user'];
-			
+			$this->load->view("manager_query");
 
+		} while( false );
+	}
+
+	// ajax function
+	public function query() {
+		$result_data = array();
+		do {
+			if( ! isset($_SESSION['user'])){
+				$result_data['result'] = false;
+				$result_data['message']=  'Please login first';
+				break;
+			}
+
+			$user = $_SESSION['user'];
+
+			$authority = $user->user_authority;
+
+			$can_access = $this->can_access_manager($authority);
+
+			if( !$can_access) {
+				$result_data['result'] = false;
+				$result_data['message']=  "U have no authority to enter in";
+				break;
+			}
+
+			$date = $this->input->post('date');
+
+			$this->load->model('Timeline_model');
+
+			$data = $this->Timeline_model->query_timeline_by_date($date);
+
+			$result_data['data'] = $data;
+			$result_data['result'] = TRUE;
 
 		} while ( false );
+
+		header("Content-Type: application/json; charset=utf-8");
+		echo json_encode($result_data);
+		
+
 	}
 
 	private function inner_add_user ($username,$starttime,$endtime) {
@@ -106,5 +143,10 @@ class Manager extends CI_Controller {
 			echo "添加用户失败";
 		}
 		echo "&nbsp;&nbsp;<a href='/manager'>返回</a>";
+	}
+
+
+	private function can_access_manager( $user_authority ) {
+		return ( ( ( $authority >> 1 ) & 1 ) >= 1 );
 	}
 }
