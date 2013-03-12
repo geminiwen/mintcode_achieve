@@ -1,5 +1,15 @@
 @charset("utf-8");
 
+tr > th {
+	border-bottom: #000 1px dashed;
+	width: 12.5%;
+}
+
+#dateTable {
+	border-collapse: collapse;
+	table-layout: auto;
+}
+
 .QueryTable,#dateTable {
 	margin: 0 auto;
 	text-align: center;

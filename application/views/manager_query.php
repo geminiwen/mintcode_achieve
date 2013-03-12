@@ -12,8 +12,8 @@
 
 	<table class="QueryTable">
 		<tr><td>日期:</td><td><input name="check_date" id="checkDate" class="Wdate" onclick="WdatePicker()"></td></tr>
-		<tr><td><button id="doQuery">查询</button></td>
-		    <td><a href="/manager">返回</a></td></tr>
+		<tr><td colspan="2"><button id="doQuery">查询</button>
+		    <a href="/manager">返回</a></td></tr>
 	</table>
 	<div id="userinfo"></div>
 	<table id="dateTable" style="display:none" class="QueryTable">

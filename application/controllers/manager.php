@@ -135,9 +135,8 @@ class Manager extends CI_Controller {
 
 		header("Content-Type: application/json; charset=utf-8");
 		echo json_encode($result_data);
-		
-
 	}
+
 
 	private function inner_add_user ($username,$starttime,$endtime) {
 		$this->load->model("User_model");

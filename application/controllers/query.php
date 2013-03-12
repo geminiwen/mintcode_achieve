@@ -16,7 +16,8 @@ class Query extends CI_Controller {
 			$this->load->view("query");
 		} while( false );
 	}
-
+	
+	// ajax function
 	public function single() {
 
 		$result_data = array();
