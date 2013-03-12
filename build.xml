@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="mintcode_achieve" 
+	default="install"
+	basedir=".">
+	
+	<property name="dist.dir" location="/var/www/mintcode" />	
+
+	<target name="install"
+		description="build target">
+		<mkdir dir="${dist.dir}" />
+		<copy todir="${dist.dir}" >
+			<fileset dir="./">
+				<exclude name="Makefile" />
+				<exclude name="build.xml" />
+			</fileset>	
+		</copy>
+		<chmod dir="${dist.dir}" perm="777" type="both" includes="**" verbose="true" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${dist.dir}" />
+	</target>		
+</project>

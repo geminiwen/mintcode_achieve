@@ -30,7 +30,7 @@
 				
 			</tbody>
 			<tfoot>
-				<tr style="background-color:#CDC9C9"><td><input type="checkbox" id="checkAll"></td><td><input type="submit" value="全部删除" id="deleteAll"></td><td></td><td id="infomation"></td><td><button onclick="window.location='manager/user'">添加新成员</button></td></tr>
+				<tr style="background-color:#CDC9C9"><td><input type="checkbox" id="checkAll"></td><td><input type="submit" value="全部删除" id="deleteAll"></td><td><button id="managerQuery" onclick="javascript:window.location='/manager/query_index'">查询</button></td><td id="infomation"></td><td><button onclick="window.location='manager/user'">添加新成员</button></td></tr>
 			</tfoot>
 		</table>
 		

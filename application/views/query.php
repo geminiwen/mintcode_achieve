@@ -11,7 +11,7 @@
 <body>
 
 	<table class="QueryTable">
-		<tr><td>起始日期:</td><td><input name="start_date" id="startDate"></td><td>终止日期:</td><td><input name="end_date" id="endDate"></td></tr>
+		<tr><td>起始日期:</td><td><input name="start_date" id="startDate" class="Wdate" onclick="WdatePicker()"></td><td>终止日期:</td><td><input name="end_date" id="endDate" class="Wdate" onclick="WdatePicker()"></td></tr>
 		<tr><td colspan="4"><button id="doQuery">查询</button></td></tr>
 	</table>
 	<div id="userinfo"></div>
@@ -20,5 +20,5 @@
 		<tbody> </tbody>
 		<tfoot></tfoot>
 	</table>
-</body>
+<script type="text/javascript" src="/resources/javascript/datepicker/WdatePicker.js" ></script></body>
 </html>
