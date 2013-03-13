@@ -123,11 +123,12 @@ class Manager extends CI_Controller {
 				break;
 			}
 
-			$date = $this->input->post('date');
+			$startDate	= $this->input->post('startDate');
+			$endDate	= $this->input->post('endDate');
 
 			$this->load->model('Timeline_model');
 
-			$data = $this->Timeline_model->query_timeline_by_date($date);
+			$data = $this->Timeline_model->query_timeline_by_date($startDate,$endDate);
 
 			$result_data['data'] = $data;
 			$result_data['result'] = TRUE;

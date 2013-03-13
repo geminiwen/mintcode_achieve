@@ -10,8 +10,10 @@
 </head>
 <body>
 	<div class="QueryContainer">
-	<div class="input-prepend"><span class="add-on">日期:</span>
-							   <input id="checkDate" class="Wdate" type="text" onclick="WdatePicker()" ></div>
+	<div class="input-prepend"><span class="add-on">开始日期:</span>
+							   <input id="startDate" class="Wdate" type="text" onclick="WdatePicker()" ></div>
+	<div class="input-prepend"><span class="add-on">结束日期</span>
+							   <input id="endDate" class="Wdate" type="text" onclick="WdatePicker()" ></div>
 	<div><button class="btn btn-primary" id="doQuery">查询</button>
 		 <button class="btn" onclick="location.replace('/manager')">返回</a>
 	</div>
@@ -23,9 +25,9 @@
 		<tfoot></tfoot>
 	</table>
 	<div id="information"></div>
-<script type="text/javascript" src="/resources/javascript/datepicker/WdatePicker.js"></script>
-<script src="/resources/javascript/seajs/sea.js"
-			data-config="use/config.js"
-			data-main="use/manager_query.js"></script>
+	<script type="text/javascript" src="/resources/javascript/datepicker/WdatePicker.js"></script>
+	<script src="/resources/javascript/seajs/sea.js"
+				data-config="use/config.js"
+				data-main="use/manager_query.js"></script>
 </body>
 </html>

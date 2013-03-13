@@ -103,16 +103,24 @@ define(function(require){
 	}
 
 	$("#doQuery").click(function(){
-		var checkDate	= $('#checkDate').val();
+		var startDate	= $('#startDate').val();
+		var endDate		= $('#endDate').val();
+		
+		if(startDate == "") {
+			$('#startDate').focus();
+			alert('开始日期不能为空');
+			return;
+		}
 
-		if(checkDate == "") {
-			$('#checkDate').focus();
-			alert('参数不能为空');
+		if(endDate == "") {
+			$('#endDate').focus();
+			alert('结束日期不能为空');
 			return;
 		}
 
 		var data = {
-			"date" : checkDate
+			"startDate" : startDate,
+			"endDate" : endDate
 		};
 		$.ajax({
 			url:"/manager/query",
