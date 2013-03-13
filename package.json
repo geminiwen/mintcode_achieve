@@ -1,0 +1,20 @@
+{
+	"name": "mintcode_ahieve",
+	"title": "Mintcode OA System",
+	"description": "An OA System for Mintcode",
+	"version": "1.0.0",
+	"author": "Gemini Wen <geminiwen@mintcode>",
+	"keywords": ["OA System","Mintcode"],
+	"engines": {
+		"node" : ">= 0.6.0"
+	},
+	"dependencies": {
+		"grunt" : "0.4.0",
+		"grunt-contrib-concat": "0.1.2",
+		"gcc" : "0.2.0"
+	},
+	"repository": {
+		"type" :"git",
+		"url" :"git://github.com/coffeesherk/mintcode_achieve.git"
+	}
+}
