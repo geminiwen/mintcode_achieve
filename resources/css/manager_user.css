@@ -1,6 +1,9 @@
 @charset("utf-8");
 
+.AddUserTable {
+	text-align: center;	
+}
 
-#AddUserTable {
-	width: 40%;
+.AddUserTable > div {
+	margin: 0 auto;
 }

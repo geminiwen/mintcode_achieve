@@ -8,6 +8,11 @@ seajs.config({
     'jquery': {
       src: 'lib/jquery-1.9.1.min.js',
       exports: 'jQuery'
-    }
+    },
+  	'bootstrap': {
+  	 src: 'lib/bootstrap.js',
+  	 deps: ['jquery'],
+     exports: 'jQuery'
+  	}
   }
 });

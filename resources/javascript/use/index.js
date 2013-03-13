@@ -3,36 +3,43 @@ define(function(require,exports) {
 	var MTDate = require("./mt_date");
 	var MTFile = require("./mt_file");
 
-	var $ = require("jquery");
+	var $ = require('bootstrap');
 
-	var date = new MTDate("#date");
-	date.render();
+	var date = new MTDate("#date").render();
 
 	var fileHolder = new MTFile("filedrag","/timeline/upload");
-	var success = function (data) {
-		var result = data['result'];
-		if( result ) {
-			$('#infomation').text("录入成功");
-		} else {
-			$('#infomation').text("录入失败");
-		}
-		
-	};
-	fileHolder.render(success,success);
+	
+	var $filedrag = $('#filedrag'),
+		notify = function(info) {
+			$filedrag.popover({
+				animation: true,
+				placement: 'bottom',
+				trigger: 'manual',
+				title: '通知',
+				content: info
+			});
+			$filedrag.popover('show');
+			setTimeout(function() { $filedrag.popover('destroy')  } ,2000);
+		},
+		success = function (data) {
+			var result = data['result'];
+			if( result ) {
+				notify("录入成功");
+			} else {
+				notify("录入失败");
+			}
+		},
+		error = success;
+
+	fileHolder.render(success,error);
+	
 	var checkAll = false;
+	
 	$('#checkAll').click(function(){ 
 		checkAll = !checkAll;
-		if(checkAll) {
-			$('.checkToDelete').each(function(id) {
-				this.checked = true;
-			});
-			
-		} else {
-			$('.checkToDelete').each(function(id) {
-				this.checked = false;
-			});
-
-		}
+		$('.checkToDelete').each(function(id) {
+				this.checked = (checkAll);
+		});
 	});
 
 	$('#deleteAll').click(function() {

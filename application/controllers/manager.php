@@ -40,6 +40,7 @@ class Manager extends CI_Controller {
 		}while (false);
 	}
 
+	// ajax function
 	public function user() {
 
 		$action = $this->input->get('action');
@@ -91,7 +92,7 @@ class Manager extends CI_Controller {
 
 			$can_access = $this->can_access_manager( $authority );
 			if( ! $can_access ) {
-				echo 'U have no access to this page';
+				echo 'You have no access to this page';
 				break;
 			}
 
@@ -140,18 +141,19 @@ class Manager extends CI_Controller {
 
 	private function inner_add_user ($username,$starttime,$endtime) {
 		$this->load->model("User_model");
-		
+		$result_data = array();
 		$user = array( 'username' => $username ,
 					   'start_time' => $starttime,
 					   'end_time' => $endtime );
 		$is_success = $this->User_model->insert($user);
 		
 		if( $is_success > 0 ) {
-			echo "添加用户成功";
+			$result_data['result'] = true;
 		} else {
-			echo "添加用户失败";
+			$result_data['result'] = false;
 		}
-		echo "&nbsp;&nbsp;<a href='/manager'>返回</a>";
+		header("Content-Type: application/json; charset=utf-8");
+		echo json_encode($result_data);
 	}
 
 

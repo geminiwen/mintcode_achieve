@@ -1,15 +1,18 @@
 define(function(require){
-	var $ = require("jquery");
+	var $ = require("bootstrap");
 
 	function handleResponseData( result ) {
 		var bSuccess = result['result'];
 
-		function wrap(text) {
-			return "<font color='red'>"+text+"</font>";
+		function wrap(text,type) {
+			if ( type == 'error' ) {
+				return "<p class='text-error'>" + text + "</p>";
+			}
+			return "<p class='muted'>" + text + "</p>";
 		}
 
 		function handleStartTime(ele,userinfo) {
-			var unchecked = "<font color='red'>打卡时间晚于12:00</font>";
+			var unchecked = wrap('打卡时间晚于12:00','error');
 			if( ele['start_checked'] == '0' ) {
 				return unchecked;
 			}
@@ -17,7 +20,7 @@ define(function(require){
 			var start_time = userinfo['start_time'];
 
 			if( ele['start_time'] > start_time ) {
-				return wrap(ele['start_time']);
+				return wrap(ele['start_time'],'error');
 			}
 
 			return ele['start_time'];
@@ -25,7 +28,7 @@ define(function(require){
 		}
 
 		function handleEndTime(ele,userinfo) {
-			var unchecked = "<font color='red'>打卡时间早于12:00</font>";
+			var unchecked = wrap('打卡时间早于12:00','error');
 			if( ele['end_checked'] == '0' ) {
 				return unchecked;
 			}
@@ -33,7 +36,7 @@ define(function(require){
 			var end_time = userinfo['end_time'];
 
 			if( ele['end_time'] < end_time ) {
-				return wrap(ele['end_time']);
+				return wrap(ele['end_time'],'error');
 			}
 
 			return ele['end_time'];
@@ -54,6 +57,7 @@ define(function(require){
 							  .append("<td>"+handleStartTime(ele,userinfo)+"</td>")
 							  .append("<td>"+handleEndTime(ele,userinfo)+"</td>")
 							  .append("<td>"+ele['check_date']+"</td>")
+							  .append("<td></td>")
 							  .appendTo(tbody);
 			}
 		}

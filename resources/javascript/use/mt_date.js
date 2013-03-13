@@ -30,6 +30,7 @@ define(function(require, exports, module) {
 		if( this.node ) {
 			$(this.node).text(this.dateString());
 		}
+		return this;
 	}
 
 	

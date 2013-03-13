@@ -3,8 +3,8 @@ define(function(require,exports,module){
 		var reg = /^(\d{1,2}):(\d{1,2}):(\d{1,2})/;
 		if( reg.test(time) ) {
 			this.hour = RegExp.$1;
-			this.minite = RegExp.$2;
-			this.seconds = RegExp.$3;
+			this.minite = RegExp.$2 || '00';
+			this.seconds = RegExp.$3 || '00';
 			this.avaliable = true;	
 		} else {
 			this.avaliable = false;
