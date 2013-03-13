@@ -11,6 +11,6 @@ And then `make` it.
 
 Thanks for [@shawnlee](http://weibo.com/234860903)'s support.
 
-Thanks to [CodeIgniter](http://codeigniter.com)、[Bootstrap](http://twitter.github.com/bootstrap/index.html)
+Thanks to [CodeIgniter](http://codeigniter.com)、[Bootstrap](http://twitter.github.com/bootstrap/index.html) etc.
 
 
