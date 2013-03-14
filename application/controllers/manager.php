@@ -116,7 +116,7 @@ class Manager extends CI_Controller {
 
 				$this->load->model('Timeline_model');
 
-				$data = $this->Timeline_model->query_timeline_by_date($startDate,$endDate);
+				$data = $this->Timeline_model->query_statistics_bettween_date($startDate,$endDate);
 
 				$result_data['data'] = $data;
 				$result_data['result'] = TRUE;

@@ -118,16 +118,16 @@ class Timeline_model extends CI_Model {
 	// 根据日期区间 查询所有人的统计数据
 	public function query_statistics_bettween_date($startDate,$endDate) {
 		$this->load->database();
-		$this->db->select("`mt_userinfo`.`user_id`,`mt_userinfo`.`username`".
+		$this->db->select("`mt_userinfo`.`user_id`,`mt_userinfo`.`username`,".
 						  "sum(case when ( `mt_useraccount`.`end_checked` = 1 and `mt_useraccount`.`end_time` < `mt_timetable`.`end_time` ) or `mt_useraccount`.`end_checked` = '0' then 1 else 0 end) as `early_quit`,".
 						  "sum(case when ( `mt_useraccount`.`start_checked` = 1 and `mt_useraccount`.`start_time` > `mt_timetable`.`start_time`) or `mt_useraccount`.`start_checked`  = '0' then 1 else 0 end) as `later_come`,".
 						  "sum(case when (( `mt_useraccount`.`start_checked` = 1 and `mt_useraccount`.`start_time` <= `mt_timetable`.`start_time`) and `mt_useraccount`.`is_weekend` = 0 ) then 1 else 0 end) as `come`,".
 						  "sum(case when (( `mt_useraccount`.`end_checked` = 1 and `mt_useraccount`.`end_time` >= `mt_timetable`.`end_time`) and `mt_useraccount`.`is_weekend` = 0 ) then 1 else 0 end) as `away`".
 						  "",FALSE);
 		$this->db->from("`mt_useraccount`,`mt_timetable`,`mt_userinfo`");
-		$this->db->where(" `mt_useraccount`.`user_id` = `mt_timetable`.`user_id` and `mt_userinfo`.`user_id` = `mt_useraccount`.`user_id`");
-		$this->db->where("`mt_useraccount`.`start_date` >=",$startDate);
-		$this->db->where("`mt_useraccount`.`end_date` <=",$endDate);
+		$this->db->where("`mt_useraccount`.`user_id` = `mt_timetable`.`user_id` and `mt_userinfo`.`user_id` = `mt_useraccount`.`user_id`");
+		$this->db->where("`mt_useraccount`.`check_date` >=",$startDate);
+		$this->db->where("`mt_useraccount`.`check_date` <=",$endDate);
 		$this->db->group_by("`mt_userinfo`.`user_id`, `mt_userinfo`.`username`");
 		$query = $this->db->get();
 		$result = $query->result();

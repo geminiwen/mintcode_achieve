@@ -3,7 +3,7 @@
 	default="install"
 	basedir=".">
 	
-	<property name="dist.dir" location="/var/www/mintcode" />	
+	<property name="dist.dir" location="/var/www" />	
 
 	<target name="install"
 		description="build target">

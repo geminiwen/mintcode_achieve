@@ -20,8 +20,8 @@
 	</div>
 	<div id="userinfo"></div>
 	<table id="dateTable" style="display:none" class="QueryTable table table-bordered table-hover">
-		<thead><tr><th>姓名</th><th>总数/th><th>上班打卡异常</th><th>下班打卡异常</th><th>备注</th></tr></thead>
-		<tbody> </tbody>
+		<thead><tr><th>姓名</th><th>上班打卡</th><th>下班打卡</th><th>上班打卡异常</th><th>下班打卡异常</th><th>备注</th></tr></thead>
+		<tbody></tbody>
 		<tfoot></tfoot>
 	</table>
 	<div id="information"></div>
