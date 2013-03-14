@@ -12,8 +12,8 @@
 			<legend>登陆</legend>
 			<table>
 				<tbody>
-					<tr><td>用户名:</td><td><input type="text" name="username" ></td></tr>
-					<tr><td>密码:</td><td><input type="password" name="password" ></td></tr>
+					<tr><td><input type="text" name="username" placeholder="用户名" ></td></tr>
+					<tr><td><input type="password" name="password" placeholder="密码"  ></td></tr>
 					<tr><td colspan="2"><input type="submit" value="登陆" class="btn btn-primary" /></td></tr>
 				</tbody>
 			</table>

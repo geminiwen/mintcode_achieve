@@ -27,7 +27,8 @@ class User_model extends CI_Model {
 		
 		$this->db->select('mt_userinfo.user_id, mt_userinfo.username, mt_timetable.start_time, mt_timetable.end_time');
 		$this->db->from('mt_userinfo,mt_timetable');
-		$this->db->where("mt_timetable.user_id = mt_userinfo.user_id");
+		$this->db->where('mt_timetable.user_id = mt_userinfo.user_id');
+		$this->db->order_by('user_id');
 		$query = $this->db->get();
 		$result	= $query->result();
 		$query->free_result();

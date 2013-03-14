@@ -46,11 +46,18 @@
 				<tr style="background-color:#CDC9C9">
 					<td><input type="checkbox" id="checkAll"></td>
 					<td><input type="submit" class="btn" value="全部删除" id="deleteAll"></td>
-					<td><button id="managerQuery" class="btn" onclick="javascript:window.location='/manager/query_index'">查询</button></td>
-					<td id="infomation"></td><td><button class="btn" onclick="window.location='manager/user'">添加新成员</button></td>
+					<td></td>
+					<td></td>
+					<td></td>
 					<td></td>
 				</tr>
 			</tfoot>
+		</table>
+
+		<table style="margin:0 auto">
+			<td><button class="btn btn-primary" onclick="location='/manager/query_index/statistics'">统计</button></td>
+			<td><button id="managerQuery" class="btn" onclick="location='/manager/query_index'">查询</button></td>
+			<td><button class="btn" onclick="window.location='manager/user'">添加新成员</button></td>
 		</table>
 		
 	</div>
