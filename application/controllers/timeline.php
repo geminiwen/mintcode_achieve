@@ -28,8 +28,8 @@ class Timeline extends CI_Controller {
 		$row_count = $data->rowcount();
 		$timeline_array = array();
 		for( $i = 2; $i <= $row_count; $i++ ) {
-			$name = $data->val($i,1);
-			$datetime_string = $data->val($i,2);
+			$name = $data->val($i,2);
+			$datetime_string = $data->val($i,3);
 
 			$kind = 0;
 			//echo "content :" . $name . "at " . $datetime. "\n";

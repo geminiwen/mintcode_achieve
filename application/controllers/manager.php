@@ -79,6 +79,7 @@ class Manager extends CI_Controller {
 	}
 
 	// ajax function
+	// query the time data, action by indicated
 	public function query( $action = 'normal' ) {
 		$result_data = array();
 		do {

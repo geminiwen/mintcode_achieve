@@ -11,6 +11,7 @@ define(function(require,exports) {
 	
 	var $filedrag = $('#filedrag'),
 		notify = function(info) {
+			loaded();
 			$filedrag.popover({
 				animation: true,
 				placement: 'bottom',
@@ -20,6 +21,20 @@ define(function(require,exports) {
 			});
 			$filedrag.popover('show');
 			setTimeout(function() { $filedrag.popover('destroy')  } ,2000);
+		},
+		loading = function() {
+			$filedrag.popover({
+				animation: true,
+				placement: 'bottom',
+				trigger: 'manual',
+				title: '通知',
+				html: true,
+				content: '<center><img src="/resources/img/ajax-loader.gif" /></center>'
+			});
+			$filedrag.popover('show');
+		},
+		loaded = function() {
+			$filedrag.popover('destroy')
 		},
 		success = function (data) {
 			var result = data['result'];

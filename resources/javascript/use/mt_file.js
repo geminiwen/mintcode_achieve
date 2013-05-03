@@ -1,4 +1,7 @@
 define(function(require,exports,module){
+
+	var $ = require('jquery')
+
 	function $id(id) {
 		return document.getElementById(id);
 	}
@@ -64,6 +67,15 @@ define(function(require,exports,module){
 							}
 						} 
 					}
+					$('#filedrag').popover({
+						animation: true,
+						placement: 'bottom',
+						trigger: 'manual',
+						title: '通知',
+						html: true,
+						content: '<img src="/resources/img/ajax-loader.gif" />'
+					});
+					$('#filedrag').popover('show');
 					xhr.open("POST", self.formAction, true);
 					xhr.send(file);
 				} else {
