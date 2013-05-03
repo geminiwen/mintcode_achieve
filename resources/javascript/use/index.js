@@ -42,6 +42,28 @@ define(function(require,exports) {
 		});
 	});
 
+	$('.save').click(function() {
+		var self = this;
+		var parent 	  = $(this).parents("table")
+		var starttime = parent.find(".starttime").val()
+		var endtime	  = parent.find(".endtime").val()
+		var userid	  = parent.find(".checkToDelete").val()
+		$.ajax({
+			url: "/manager/update_time",
+			data: { 'id': userid, 'starttime' : starttime, 'endtime' : endtime},
+			method: 'post',
+			dataType: 'json',
+			beforeSend: function() {
+				$(self).hide();
+				$(self).parent().find('img').show();
+			},
+			success: function() { 
+				$(self).show();
+				$(self).parent().find('img').hide();
+			}
+		})
+	});
+
 	$('#deleteAll').click(function() {
 		return false;
 	})

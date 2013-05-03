@@ -96,7 +96,7 @@ class Manager extends CI_Controller {
 
 			if( !$can_access ) {
 				$result_data['result'] = false;
-				$result_data['message']=  "U have no authority to enter in";
+				$result_data['message']=  "You have no authority to enter in";
 				break;
 			}
 
@@ -123,6 +123,50 @@ class Manager extends CI_Controller {
 			}
 
 		} while ( false );
+
+		header("Content-Type: application/json; charset=utf-8");
+		echo json_encode($result_data);
+	}
+
+	// ajax function
+	public function update_time() {
+		
+		$result_data = array();
+		do {
+			if( ! isset($_SESSION['user']) ){
+				$result_data['result'] = false;
+				$result_data['message']=  'Please login first';
+				break;
+			}
+
+			$user = $_SESSION['user'];
+
+			$authority = $user->user_authority;
+
+			$can_access = $this->can_access_manager($authority);
+
+			if( !$can_access ) {
+				$result_data['result'] = false;
+				$result_data['message']=  "You have no authority to enter in";
+				break;
+			}
+
+			$id = $this->input->post('id');
+			$start_time = $this->input->post('starttime');
+			$end_time = $this->input->post('endtime');
+
+			$this->load->model('Timeline_model');
+
+			$is_success = $this->Timeline_model->update($id,$start_time,$end_time);
+
+			if( $is_success > 0 ) {
+				$result_data['result'] = true;
+			} else {
+				$result_data['result'] = false;
+			}
+
+
+		} while(false);
 
 		header("Content-Type: application/json; charset=utf-8");
 		echo json_encode($result_data);
@@ -159,7 +203,7 @@ class Manager extends CI_Controller {
 
 
 	// ajax function
-	private function inner_add_user ($username,$starttime,$endtime) {
+	private function inner_add_user ($username,$start_time,$endtime) {
 		$this->load->model("User_model");
 		$result_data = array();
 		$user = array( 'username' => $username ,

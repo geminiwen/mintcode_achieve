@@ -17,14 +17,14 @@ class Timeline extends CI_Controller {
 				echo 'failed';
 			}
 		
-			$success = $this->deal_with_excel($path);
+			$this->deal_with_excel($path);
 
 		} while( false );
 	}
 
-	private function deal_with_excel($filename) {
+	private function deal_with_excel($path) {
 		$affcted_rows = 0;
-		$data = new Spreadsheet_Excel_Reader($filename);
+		$data = new Spreadsheet_Excel_Reader($path);
 		$row_count = $data->rowcount();
 		$timeline_array = array();
 		for( $i = 2; $i <= $row_count; $i++ ) {

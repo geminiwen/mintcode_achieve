@@ -76,6 +76,16 @@ class Timeline_model extends CI_Model {
 		return $affected_num;
 	}
 
+	public function update($user_id,$start_time,$end_time) {
+		$this->load->database();
+		$this->db->where('user_id',$user_id);
+		$data = array('start_time' => $start_time, 'end_time' => $end_time );
+		$this->db->update('mt_timetable', $data);
+		$affected_num = $this->db->affected_rows();
+		$this->db->close();
+		return $affected_num;
+	}
+
 	public function query_bettween_date_by_user($user_id,$timeline_info) {
 		$this->load->database();
 		$start_date = $timeline_info['start_date'];

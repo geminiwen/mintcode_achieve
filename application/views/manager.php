@@ -35,9 +35,9 @@
 					<td><input type="checkbox" name="du[]" class="checkToDelete" value="{user_id}"></td>
 					<td>{user_id}</td>
 					<td><a href="/query/single?action=indicate&user_name={username}">{username}</a></td>
-					<td><input type="text" name="starttime[]" value='{start_time}'></td>
-					<td><input type="text" name="endtime[]" value='{end_time}'></td>
-					<td><input type="button" class="save btn" value="保存更改" disabled/></td>
+					<td><input type="text" class="starttime" name="starttime[]" value='{start_time}'></td>
+					<td><input type="text" class="endtime" name="endtime[]" value='{end_time}'></td>
+					<td><input type="button" class="save btn" value="保存更改" /><img src="/resources/img/ajax-loader.gif" style="display:none;" /></td>
 				</tr>
 				{/users}
 				
