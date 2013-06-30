@@ -2,13 +2,14 @@
 <html lang="zh-CN">
 <head>
 <title>完善个人信息</title>
-<link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
-<link rel="stylesheet" type="text/css" href="/resources/css/login.css" />
-<script type="text/javascript" src="/resources/javascript/lib/jquery-1.9.1.min.js"></script>
+<base href="<?=$this->config->item('base_url')?>" />
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/main.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/login.css" />
+<script type="text/javascript" src="resources/javascript/lib/jquery-1.9.1.min.js"></script>
 </head>
 <body>
-	<form action="/user/change_password?action=change" method="post" id="changepwd">
+	<form action="user/change_password?action=change" method="post" id="changepwd">
 		<fieldset>
 			<legend>完善个人信息</legend>
 			<table>

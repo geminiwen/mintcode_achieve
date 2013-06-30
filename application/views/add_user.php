@@ -3,10 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<title>欢迎</title>
-	<link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="/resources/css/manager.css" />
-	<link rel="stylesheet" type="text/css" href="/resources/css/manager_user.css" />
+	<base href="<?=$this->config->item('base_url')?>" />
+	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/manager.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/manager_user.css" />
 	
 </head>
 <body>
@@ -18,7 +19,7 @@
 		<div class="AddUserRow"><input type="text" name="endtime" placeholder="下班时间" ></div>
 		<div><input type="button" id="submit" class="btn btn-primary" value="提交">
 			 <input type="reset" class="btn" value="重置">
-			 <input type="button" class="btn" onclick="location.replace('/manager')" value="返回" ></div>
+			 <input type="button" class="btn" onclick="location.replace('manager')" value="返回" ></div>
 	</div>
 
 	<div id="modalDialog" class="modal hide fade" tabindex="-1" role="dialog">
@@ -31,8 +32,8 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="/resources/javascript/datepicker/WdatePicker.js"></script>
-	<script src="/resources/javascript/seajs/sea.js"
+	<script type="text/javascript" src="resources/javascript/datepicker/WdatePicker.js"></script>
+	<script src="resources/javascript/seajs/sea.js"
 			data-config="use/config.js"
 			data-main="use/add_user.js"></script>
 </body>

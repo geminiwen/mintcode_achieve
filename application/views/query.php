@@ -3,9 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<title>查询</title>
-	<link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="/resources/css/query.css" />
+	<base href="<?=$this->config->item('base_url')?>" />
+	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/query.css" />
 	
 </head>
 <body>
@@ -21,9 +22,9 @@
 		<tbody> </tbody>
 		<tfoot></tfoot>
 	</table>
-	<script src="/resources/javascript/seajs/sea.js"
+	<script src="resources/javascript/seajs/sea.js"
 				data-config="use/config.js"
 				data-main="use/query.js"></script>
-	<script type="text/javascript" src="/resources/javascript/datepicker/WdatePicker.js" ></script>
+	<script type="text/javascript" src="resources/javascript/datepicker/WdatePicker.js" ></script>
 </body>
 </html>

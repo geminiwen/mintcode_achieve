@@ -3,9 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<title>查询</title>
-	<link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="/resources/css/query.css" />
+	<base href="<?=$this->config->item('base_url')?>" />
+	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/query.css" />
 	
 </head>
 <body>
@@ -15,7 +16,7 @@
 	<div class="input-prepend"><span class="add-on">结束日期</span>
 							   <input id="endDate" class="Wdate" type="text" onclick="WdatePicker()" ></div>
 	<div><button class="btn btn-primary" id="doQuery">查询</button>
-		 <button class="btn" onclick="location.replace('/manager')">返回</a>
+		 <button class="btn" onclick="location.replace('manager')">返回</a>
 	</div>
 	</div>
 	<div id="userinfo"></div>
@@ -25,8 +26,8 @@
 		<tfoot></tfoot>
 	</table>
 	<div id="information"></div>
-	<script type="text/javascript" src="/resources/javascript/datepicker/WdatePicker.js"></script>
-	<script src="/resources/javascript/seajs/sea.js"
+	<script type="text/javascript" src="resources/javascript/datepicker/WdatePicker.js"></script>
+	<script src="resources/javascript/seajs/sea.js"
 				data-config="use/config.js"
 				data-main="use/manager_query.js"></script>
 </body>
